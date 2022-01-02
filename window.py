@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import *
 from tkinter import ttk
+from PIL import Image, ImageTk
 
 
 
@@ -18,12 +19,12 @@ pw = ttk.PanedWindow(orient=tk.HORIZONTAL)
 left_list = tk.Listbox(win)
 left_list.pack(side=tk.LEFT)
 pw.add(left_list )
-left_list.config(bg = "grey")
+left_list.config(bg = "lightcyan4")
 
 right_list = tk.Listbox(win)
 right_list.pack(side=tk.LEFT)
 pw.add(right_list)
-right_list.config(bg = "black")
+right_list.config(bg = "lightpink")
 
 pw.pack(fill=tk.BOTH,expand=True)
 #for icon
@@ -43,7 +44,7 @@ terminal = Menu(menubar, tearoff = False)
 help = Menu(menubar, tearoff = False)
 '''
 #for toolbar
-toolbar = Frame(win.master, bd=1, relief=RAISED)
+toolbar = Frame (win.master, bd= 2, relief=RAISED)
 
 win.img = Image.open("p.png")
 eimg = ImageTk.PhotoImage(win.img)
@@ -51,49 +52,23 @@ eimg = ImageTk.PhotoImage(win.img)
 exitButton = Button(toolbar, image=eimg, relief=FLAT, command=win.quit)
 exitButton.image = eimg
 exitButton.pack(side=LEFT, padx=2, pady=2)
-toolbar.pack(side=TOP, fill=X)
-#win.master.config(menu=menubar)
-win.pack()'''
+toolbar.pack(side=LEFT, fill=Y)
+#toolbar.config(height = 30)
+#toolbar.pack() '''
 
 
 #to create scroll bar
-'''sb = Scrollbar(win)
-sb.pack(side = RIGHT,fill = X)
-mylist=Listbox(win,xscrollcommand=sb.set)
+sb = Scrollbar(win,bd ="20" , width ="25")
+sb.pack(side = RIGHT,fill = Y)
+#mylist=Listbox(win,xscrollcommand=sb.set)
+#for line in range(100): 
+    #mylist.insert(END,"khushi jain")
+#mylist.pack(side = LEFT, fill = BOTH)
+#sb.config(command=mylist.xview)
 
-mylist.pack(side = RIGHT)
-sb.config(command=mylist.xview)'''
 
-'''
- #specify size of window.
 
-#win.geometry("250x170")
-
-# Create text widget and specify size.
-T = Text(win, height = 5, width = 52,fg ="grey",bg = "magenta",bd =1 )
-
-# Create label
-write = input(('write some text here' ))
-l = Label(win, text = "write")
-l.config(font =("Courier", 14))
-
-#Fact = """hello i am khushi"""
-
-# Create button for next text.
-#b1 = Button(win, text = "Next", )
-
-# Create an Exit button.
-#b2 = Button(win, text = "Exit",
-			#command = win.destroy)
-
-l.pack()
-T.pack()
-#b1.pack()
-#b2.pack()
-
-# Insert The Fact.
-T.insert(tk.END) '''
-
+#create menu
 menubar.add_cascade(label='File',menu =file)
 menubar.add_cascade(label='Edit',menu =edit)
 menubar.add_cascade(label='Selection',menu =selection)
@@ -124,6 +99,7 @@ file.add_command(label="Save as", accelerator="ctrl+shift+S")
 file.add_command(label="Save all", accelerator="ctrl+K")
 file.add_separator()
 file.add_command(label="Auto Save")
+ 
  #add submenu to preference
 sub_menu = Menu(file)
 sub_menu.add_command(label="color theme",accelerator="ctrl+k+ctrl+t")
@@ -142,13 +118,6 @@ file.add_command(label="Close Window", accelerator="altr+F4")
 file.add_separator()
 file.add_command(label="Exit File",command=exit, accelerator="altr+X")
 
-#to set cursor
-B1 = tk.Button(win, text ="circle", relief=RAISED,\
-                         cursor="circle")
-B2 = tk.Button(win, text ="plus", relief=RAISED,\
-                         cursor="plus")
-B1.pack()
-B2.pack()
 #to set file menu theme
 file.config(bg="pink",fg="black",activebackground="blue",activeforeground="red",activeborderwidth=2)
 file.config(font="calbri")
