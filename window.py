@@ -10,9 +10,19 @@ from PIL import Image, ImageTk
 win = tk.Tk() # Tk is a class of Tkinter
 win.title('                                                                                                                                                                                                     \t \t\t\t\t\t\t\tVisual Studio Code')
 win.state('zoomed')
-win.geometry('400x200') #size of window
+#win.geometry('400x200') #size of window
 style = ttk.Style() # style for sash and handle 
 style.theme_use('classic')
+
+
+# for scroll bar 
+
+sb = Scrollbar(win,orient = HORIZONTAL)
+sb.pack(side = BOTTOM, fill = X)
+
+sbb = Scrollbar(win,orient = VERTICAL)
+sbb.pack(side = RIGHT, fill = Y)
+
 #for panewindow
 pw = ttk.PanedWindow(orient=tk.HORIZONTAL)
 
@@ -27,13 +37,14 @@ pw.add(right_list)
 right_list.config(bg = "lightpink")
 
 pw.pack(fill=tk.BOTH,expand=True)
+
 #for icon
 try: #set icon for window
   win.iconbitmap('vsicon.ico')
 except:
     pass
 
-menubar = Menu() # Menu is a Class of Tkinter Library
+menubar = Menu()     # Menu is a Class of Tkinter Library
 file = Menu(menubar, tearoff = False)
 edit = Menu(menubar, tearoff = False)
 selection = Menu(menubar, tearoff = False)
@@ -55,18 +66,6 @@ exitButton.pack(side=LEFT, padx=2, pady=2)
 toolbar.pack(side=LEFT, fill=Y)
 #toolbar.config(height = 30)
 #toolbar.pack() '''
-
-
-#to create scroll bar
-sb = Scrollbar(win,bd ="20" , width ="25")
-sb.pack(side = RIGHT,fill = Y)
-#mylist=Listbox(win,xscrollcommand=sb.set)
-#for line in range(100): 
-    #mylist.insert(END,"khushi jain")
-#mylist.pack(side = LEFT, fill = BOTH)
-#sb.config(command=mylist.xview)
-
-
 
 #create menu
 menubar.add_cascade(label='File',menu =file)
